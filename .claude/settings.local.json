@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks)",
+      "Bash(npm install --save-dev @docusaurus/core@latest @docusaurus/preset-classic@latest @docusaurus/theme-mermaid@latest)",
+      "Bash(npm install --save @docusaurus/core@latest @docusaurus/preset-classic@latest @docusaurus/theme-mermaid@latest)",
+      "Bash(npx create-docusaurus@latest . classic)",
+      "Bash(npm run)",
+      "Bash(npm run build)",
+      "Bash(npm install)",
+      "Bash(git fetch --all --prune)",
+      "Bash(.specify/scripts/bash/create-new-feature.sh --json \"Title: Physical AI & Humanoid Robotics — Course Book\nTarget audience: Hackathon participants, instructors\nFocus: Create a Docusaurus-based book covering Physical AI & Humanoid Robotics modules, deployable to GitHub Pages.\n\nInstructions:\n1. First, define the complete repo layout and folder/file structure, including all modules and weekly chapters.\n2. Then, generate a Spec-Kit Plus compatible spec.\n3. Produce first-draft Markdown for all chapters and capstone.\n4. Include example ROS 2 and NVIDIA Isaac code snippets.\n5. Provide GitHub Actions workflow to deploy site to GitHub Pages.\n\nModules & Chapters Mapping:\n- Module 1: The Robotic Nervous System (ROS 2) → 03-ros2.md\n- Module 2: The Digital Twin (Gazebo & Unity) → 04-simulation.md\n- Module 3: The AI-Robot Brain (NVIDIA Isaac™) → 05-isaac.md\n- Module 4: Vision-Language-Action (VLA) → 06-vla.md\n- Capstone Project: The Autonomous Humanoid → 07-capstone.md\n- Introduction / Course Overview → index.md\n- Assessments → assessments.md\n\nWeekly Breakdown (for chapter details / subpages):\n- Weeks 1-2: Introduction to Physical AI (include sensors, embodied intelligence)\n- Weeks 3-5: ROS 2 Fundamentals (nodes, topics, services, rclpy)\n- Weeks 6-7: Robot Simulation with Gazebo & Unity\n- Weeks 8-10: NVIDIA Isaac Platform (perception, manipulation, sim-to-real)\n- Weeks 11-12: Humanoid Robot Development (kinematics, bipedal locomotion, manipulation)\n- Week 13: Conversational Robotics (GPT integration, multi-modal interaction)\n\nSuccess criteria:\n- Repo layout clearly defined and matches hackathon deliverables.\n- Each module/week has a corresponding book page.\n- Spec document complete and usable by Spec-Kit Plus.\n- Docusaurus skeleton with docs/, docusaurus.config.js, sidebars.js, package.json.\n- Example code snippets exist in /examples/.\n- Acceptance checklist for build, serve, deploy.\n\nConstraints:\n- Markdown format compatible with Docusaurus and Spec-Kit Plus.\n- Word count per module: 800–2000 words.\n- Only small runnable code snippets; no large binaries.\n- Citation placeholders [cite:authorYear] optional.\n\nNot building:\n- Vendor comparisons, live demos, ethics discussions.\n\nDeliverables:\n- Complete repo layout.\n- Spec-Kit Plus spec Markdown.\n- First-draft docs/ pages for all modules and capstone.\n- Example code snippets in /examples/.\n- Docusaurus config, sidebars, package.json, README.\n- GitHub Actions workflow for deployment.\n- Acceptance checklist and milestones.\" --number 1 --short-name \"physical-ai-course\")",
+      "Bash(.specify/scripts/bash/setup-plan.sh --json)",
+      "Bash(.specify/scripts/bash/update-agent-context.sh claude)",
+      "Bash(.specify/scripts/bash/check-prerequisites.sh --json)",
+      "Bash(git rev-parse --git-dir)",
+      "Bash(npx docusaurus build)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "github",
+    "context7"
+  ]
+}

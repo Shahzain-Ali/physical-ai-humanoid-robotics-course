@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+build/
+dist/
+.next/
+.nuxt/
+out/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docusaurus
+.cache/
+.docusaurus/
+.vercel/
+.netlify/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Python (from original)
+.venv

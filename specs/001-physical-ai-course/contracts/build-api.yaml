@@ -1,0 +1,81 @@
+# Build API Contract for Physical AI & Humanoid Robotics Course Book
+
+# This contract defines the interface for the build and deployment process
+# Since this is a static site, the "API" is the interface between source content and the generated site
+
+openapi: 3.0.0
+info:
+  title: Course Book Build API
+  version: 1.0.0
+  description: Interface for building and validating the Physical AI & Humanoid Robotics course book
+
+paths:
+  /build:
+    post:
+      summary: Build the static site from source content
+      description: Compiles Markdown content and configuration into a static website
+      responses:
+        '200':
+          description: Build successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [success, failure]
+                  message:
+                    type: string
+                  outputDir:
+                    type: string
+                    description: Directory where built site is located
+                  assets:
+                    type: array
+                    items:
+                      type: string
+                    description: List of generated assets
+        '400':
+          description: Build failed due to content errors
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [failure]
+                  error:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      type: string
+
+  /validate:
+    post:
+      summary: Validate content and structure
+      description: Checks that all required content exists and meets quality standards
+      responses:
+        '200':
+          description: Validation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    enum: [valid, invalid]
+                  issues:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        file:
+                          type: string
+                        severity:
+                          type: string
+                          enum: [error, warning]
+                        message:
+                          type: string
