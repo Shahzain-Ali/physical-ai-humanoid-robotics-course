@@ -75,3 +75,34 @@ These weeks focus on ROS 2 (Robot Operating System 2), the middleware that enabl
 - **Week 3**: Introduction to ROS 2 architecture, nodes, and topics
 - **Week 4**: Services, actions, and parameter management
 - **Week 5**: Advanced ROS 2 concepts with rclpy and practical implementations
+
+### Weeks 6-7: Robot Simulation with Gazebo & Unity
+
+Learn to create digital twins of robotic systems for testing and development:
+
+- **Week 6**: Gazebo simulation environment - world creation, robot models (URDF/SDF), sensor simulation
+- **Week 7**: Unity integration - physics engines, visualization, advanced simulation scenarios
+
+### Weeks 8-10: NVIDIA Isaac Platform
+
+Explore the NVIDIA Isaac platform for AI-powered robotics:
+
+- **Week 8**: Isaac architecture, perception pipelines, and sensor processing
+- **Week 9**: Manipulation tasks, motion planning, and grasp synthesis
+- **Week 10**: Sim-to-real transfer, reinforcement learning for robotics
+
+### Weeks 11-12: Humanoid Robot Development
+
+Focus on the unique challenges of humanoid robotics:
+
+- **Week 11**: Kinematics and dynamics of humanoid robots, bipedal locomotion
+- **Week 12**: Whole-body control, manipulation with humanoid platforms, balance and stability
+
+### Week 13: Conversational Robotics
+
+Integrate language models and multimodal AI for human-robot interaction:
+
+- Natural language understanding for robotics
+- GPT integration and conversational AI
+- Multi-modal interaction (vision, language, action)
+- Real-world deployment considerations

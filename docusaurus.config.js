@@ -86,7 +86,7 @@ const config = {
             items: [
               {
                 label: 'Course Introduction',
-                to: '/docs/index',
+                to: 'docs/',
               },
             ],
           },

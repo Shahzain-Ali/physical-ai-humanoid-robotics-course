@@ -14,6 +14,16 @@ This course book provides comprehensive coverage of Physical AI and Humanoid Rob
 6. **Capstone Project** - Autonomous Humanoid implementation
 7. **Assessments** - Evaluation and testing materials
 
+### Weekly Breakdown
+
+The course is structured across 13 weeks, with detailed weekly content covering:
+- **Weeks 1-2**: Introduction to Physical AI (sensors, perception, embodied intelligence)
+- **Weeks 3-5**: ROS 2 Fundamentals (architecture, nodes, topics, services)
+- **Weeks 6-7**: Robot Simulation (Gazebo, Unity, digital twins)
+- **Weeks 8-10**: NVIDIA Isaac Platform (perception, manipulation, sim-to-real)
+- **Weeks 11-12**: Humanoid Robot Development (kinematics, bipedal locomotion)
+- **Week 13**: Conversational Robotics (GPT integration, multi-modal interaction)
+
 ## Prerequisites
 
 - Node.js (v18 or higher)
@@ -52,21 +62,26 @@ The site is configured for GitHub Pages deployment. The deployment settings are 
 ```
 physical-ai-humanoid-robotics-course/
 ├── docs/                    # Course content (Markdown files)
-│   ├── index.md            # Introduction / Course Overview
-│   ├── 03-ros2.md          # Module 1: The Robotic Nervous System (ROS 2)
-│   ├── 04-simulation.md    # Module 2: The Digital Twin (Gazebo & Unity)
-│   ├── 05-isaac.md         # Module 3: The AI-Robot Brain (NVIDIA Isaac™)
-│   ├── 06-vla.md           # Module 4: Vision-Language-Action (VLA)
-│   ├── 07-capstone.md      # Capstone Project: The Autonomous Humanoid
+│   ├── index.md            # Introduction / Course Overview (includes weekly breakdown)
+│   ├── ros2.md             # Module 1: The Robotic Nervous System (ROS 2)
+│   ├── simulation.md       # Module 2: The Digital Twin (Gazebo & Unity)
+│   ├── isaac.md            # Module 3: The AI-Robot Brain (NVIDIA Isaac™)
+│   ├── vla.md              # Module 4: Vision-Language-Action (VLA)
+│   ├── capstone.md         # Capstone Project: The Autonomous Humanoid
 │   └── assessments.md      # Assessments
 ├── examples/               # ROS 2 and Isaac code examples
-├── src/                    # Custom React components (if needed)
+│   ├── ros2-examples/      # ROS 2 publisher/subscriber examples
+│   ├── isaac-examples/     # NVIDIA Isaac perception examples
+│   └── simulation-examples/ # Robot controller examples
+├── src/                    # Custom React components and CSS
+│   └── css/custom.css      # Custom styling
 ├── static/                 # Static assets (images, etc.)
 ├── .github/workflows/      # GitHub Actions for deployment
+│   └── deploy.yml          # Automated GitHub Pages deployment
 ├── docusaurus.config.js    # Docusaurus configuration
 ├── sidebars.js             # Navigation structure
-├── package.json           # Project dependencies and scripts
-└── README.md              # Project overview
+├── package.json            # Project dependencies and scripts
+└── README.md               # Project overview
 ```
 
 ## Contributing
