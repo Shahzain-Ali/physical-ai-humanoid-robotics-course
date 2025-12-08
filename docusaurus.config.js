@@ -12,13 +12,13 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-username.github.io', // This will be updated to the specific GitHub Pages URL
+  url: "https://shahzain-ali.github.io/physical-ai-humanoid-robotics-course/", // This will be updated to the specific GitHub Pages URL
   // Set the /<base> pathname under which your site is served
   // For GitHub Pages, this is usually /<project-name>/
   baseUrl: '/physical-ai-humanoid-robotics-course/',
 
   // GitHub pages deployment config.
-  organizationName: 'your-username', // Usually your GitHub org/user name.
+  organizationName: 'Shahzain-Ali', // Usually your GitHub org/user name.
   projectName: 'physical-ai-humanoid-robotics-course', // Usually your repo name.
   deploymentBranch: 'gh-pages', // The branch to deploy to.
 
@@ -43,7 +43,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/your-username/physical-ai-humanoid-robotics-course/tree/main/',
+            'https://github.com/Shahzain-Ali/physical-ai-humanoid-robotics-course/tree/main/',
         },
         blog: false, // Disable blog functionality as we're creating a course book
         theme: {
@@ -63,6 +63,8 @@ const config = {
         logo: {
           alt: 'Physical AI Logo',
           src: 'img/logo.svg',
+          href: '/docs/',
+          target: '_self',
         },
         items: [
           {
@@ -72,7 +74,7 @@ const config = {
             label: 'Course Book',
           },
           {
-            href: 'https://github.com/your-username/physical-ai-humanoid-robotics-course',
+            href: 'https://github.com/Shahzain-Ali/physical-ai-humanoid-robotics-course',
             label: 'GitHub',
             position: 'right',
           },
@@ -112,7 +114,7 @@ const config = {
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/your-username/physical-ai-humanoid-robotics-course',
+                href: 'https://github.com/Shahzain-Ali/physical-ai-humanoid-robotics-course',
               },
             ],
           },
