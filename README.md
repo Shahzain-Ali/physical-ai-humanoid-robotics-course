@@ -84,6 +84,23 @@ physical-ai-humanoid-robotics-course/
 └── README.md               # Project overview
 ```
 
+## MCP (Model Context Protocol) Setup
+
+This project uses MCP servers for GitHub integration and Context7 documentation. To set up:
+
+1. Copy the example MCP configuration:
+   ```bash
+   cp .mcp.json.example .mcp.json
+   ```
+
+2. Add your API keys to `.mcp.json`:
+   - `GITHUB_PERSONAL_ACCESS_TOKEN`: Get from [GitHub Settings → Developer settings → Personal access tokens](https://github.com/settings/tokens)
+   - `CONTEXT7_API_KEY`: Get from [Context7 Dashboard](https://context7.com)
+
+3. The `.mcp.json` file is gitignored to protect your secrets.
+
+**Note:** Never commit your actual API keys to version control!
+
 ## Contributing
 
 To add new content:
