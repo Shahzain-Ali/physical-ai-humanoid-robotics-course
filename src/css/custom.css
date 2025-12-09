@@ -1,96 +1,355 @@
 /**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
+ * Physical AI & Humanoid Robotics Course Book
+ * Professional styling for an educational platform
  */
 
-/* You can override the default Infima variables here. */
+/* Modern Color Palette - Robotics & AI Theme */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
+  /* Primary - Deep Blue (Technology & Trust) */
+  --ifm-color-primary: #2563eb;
+  --ifm-color-primary-dark: #1e40af;
+  --ifm-color-primary-darker: #1e3a8a;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+
+  /* Secondary Colors */
+  --ifm-color-secondary: #10b981;
+  --ifm-color-accent: #f59e0b;
+  --ifm-color-robotics: #8b5cf6;
+
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --ifm-code-font-size: 92%;
+  --ifm-line-height-base: 1.7;
+
+  /* Spacing */
+  --ifm-leading-desktop: 1.8;
+  --ifm-global-spacing: 1.5rem;
+
+  /* Container widths */
+  --ifm-container-width-xl: 1400px;
+
+  /* Shadows */
+  --ifm-global-shadow-lw: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --ifm-global-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --ifm-global-shadow-tl: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* Custom styles for the Physical AI & Humanoid Robotics course */
-.course-overview {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  padding: 2rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
+/* Dark Mode Variables */
+html[data-theme='dark'] {
+  --ifm-color-primary: #60a5fa;
+  --ifm-color-primary-dark: #3b82f6;
+  --ifm-color-primary-darker: #2563eb;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #93c5fd;
+  --ifm-color-primary-lighter: #bfdbfe;
+  --ifm-color-primary-lightest: #dbeafe;
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
 }
 
-.module-intro {
-  border-left: 4px solid var(--ifm-color-primary);
-  padding-left: 1rem;
-  margin: 1.5rem 0;
+/* ========================================
+   GLOBAL IMPROVEMENTS
+======================================== */
+
+/* Better Typography */
+.markdown h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-robotics) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.learning-objectives {
-  background-color: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  margin: 1.5rem 0;
+.markdown h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 2px solid var(--ifm-color-primary);
+  padding-bottom: 0.5rem;
 }
 
-.learning-objectives h3 {
-  margin-top: 0;
+.markdown h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   color: var(--ifm-color-primary);
 }
 
-.code-examples {
-  background-color: #2d3748;
-  color: #f7fafc;
-  border-radius: 0.5rem;
-  padding: 1.25rem;
+.markdown h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.markdown p {
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+}
+
+/* Improved Lists */
+.markdown ul,
+.markdown ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.75rem;
+}
+
+.markdown li {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.markdown li strong {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Beautiful Code Blocks */
+.prism-code {
+  border-radius: 0.75rem;
+  box-shadow: var(--ifm-global-shadow-md);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+pre {
+  border-radius: 0.75rem !important;
   margin: 1.5rem 0;
 }
 
-.code-examples h3 {
-  color: #68d391;
-  margin-top: 0;
+code {
+  background-color: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: 0.25rem;
+  padding: 0.15rem 0.4rem;
+  font-size: 0.9em;
 }
 
-.references {
-  background-color: #fff;
-  border: 1px solid #e2e8f0;
+/* ========================================
+   SIDEBAR IMPROVEMENTS
+======================================== */
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-toc-border-color);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+}
+
+.menu__link {
   border-radius: 0.5rem;
-  padding: 1.25rem;
-  margin: 1.5rem 0;
+  padding: 0.5rem 0.75rem;
+  transition: all 0.2s ease;
 }
 
-.references h3 {
-  color: #4a5568;
-  margin-top: 0;
+.menu__link:hover {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  transform: translateX(4px);
 }
 
-/* Docusaurus-specific customizations */
-.docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+.menu__link--active {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-robotics) 100%);
+  color: white !important;
+  font-weight: 600;
+  box-shadow: var(--ifm-global-shadow-md);
 }
 
-html[data-theme='dark'] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
+/* ========================================
+   CUSTOM COMPONENTS
+======================================== */
+
+/* Hero Section Styling */
+.markdown > h1:first-child {
+  font-size: 3rem;
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-/* Custom admonitions for robotics content */
-.admonition-robotics-tip {
-  border-color: #3182ce;
+.markdown > h1:first-child::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ifm-color-primary) 0%, var(--ifm-color-robotics) 100%);
+  border-radius: 2px;
 }
 
-.admonition-robotics-caution {
-  border-color: #dd6b20;
+/* Feature Cards/Boxes */
+.markdown blockquote {
+  border-left: 4px solid var(--ifm-color-primary);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0.75rem;
+  box-shadow: var(--ifm-global-shadow-lw);
 }
 
-.admonition-robotics-warning {
-  border-color: #e53e3e;
+/* Learning Objectives & Important Sections */
+.alert {
+  border-radius: 0.75rem;
+  box-shadow: var(--ifm-global-shadow-md);
+  border-width: 2px;
+}
+
+.alert--primary {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(37, 99, 235, 0.05) 100%);
+  border-color: var(--ifm-color-primary);
+}
+
+.alert--success {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+  border-color: var(--ifm-color-secondary);
+}
+
+.alert--warning {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.05) 100%);
+  border-color: var(--ifm-color-accent);
+}
+
+/* Table Improvements */
+table {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: var(--ifm-global-shadow-md);
+  margin: 2rem 0;
+}
+
+thead {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-robotics) 100%);
+  color: white;
+}
+
+thead th {
+  font-weight: 700;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+}
+
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+tbody td {
+  padding: 0.875rem 1rem;
+}
+
+/* ========================================
+   NAVIGATION & FOOTER
+======================================== */
+
+.navbar {
+  box-shadow: var(--ifm-global-shadow-md);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+html[data-theme='dark'] .navbar {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-robotics) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer {
+  background: linear-gradient(180deg, var(--ifm-background-surface-color) 0%, #0f172a 100%);
+  border-top: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.footer__title {
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+/* ========================================
+   BADGES & LABELS
+======================================== */
+
+.badge {
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge--primary {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-robotics) 100%);
+  color: white;
+}
+
+/* ========================================
+   RESPONSIVE IMPROVEMENTS
+======================================== */
+
+@media (max-width: 996px) {
+  .markdown h1 {
+    font-size: 2rem;
+  }
+
+  .markdown h2 {
+    font-size: 1.5rem;
+  }
+
+  .markdown > h1:first-child {
+    font-size: 2.25rem;
+  }
+}
+
+/* ========================================
+   ANIMATIONS & TRANSITIONS
+======================================== */
+
+.menu__link,
+.navbar__link,
+.footer__link-item,
+tbody tr {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Page transitions */
+.theme-doc-markdown {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

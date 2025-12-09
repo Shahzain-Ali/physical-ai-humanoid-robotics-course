@@ -12,9 +12,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: "https://shahzain-ali.github.io/physical-ai-humanoid-robotics-course/", // This will be updated to the specific GitHub Pages URL
-  // Set the /<base> pathname under which your site is served
-  // For GitHub Pages, this is usually /<project-name>/
+  url: 'https://shahzain-ali.github.io',
   baseUrl: '/physical-ai-humanoid-robotics-course/',
 
   // GitHub pages deployment config.
