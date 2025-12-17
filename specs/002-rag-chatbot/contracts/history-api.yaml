@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: Chat History API
+  version: 1.0.0
+  description: API for retrieving chat conversation history
+
+servers:
+  - url: https://physical-ai-backend.railway.app
+    description: Production backend
+  - url: http://localhost:8000
+    description: Local development
+
+paths:
+  /history:
+    get:
+      summary: Retrieve chat history for a session
+      operationId: getChatHistory
+      tags:
+        - Chat
+      parameters:
+        - name: session_id
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Session identifier to retrieve history for
+          example: "session_xyz789"
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 50
+          description: Maximum number of messages to return
+      responses:
+        '200':
+          description: Chat history retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - messages
+                  - session_id
+                properties:
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                        - role
+                        - content
+                        - timestamp
+                      properties:
+                        role:
+                          type: string
+                          enum: [user, assistant]
+                          example: "user"
+                        content:
+                          type: string
+                          example: "What are ROS 2 nodes?"
+                        timestamp:
+                          type: string
+                          format: date-time
+                          example: "2025-12-17T10:30:00Z"
+                        metadata:
+                          type: object
+                          nullable: true
+                          description: Optional metadata (e.g., selected_text)
+                  session_id:
+                    type: string
+                    example: "session_xyz789"
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Session not found"

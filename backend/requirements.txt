@@ -1,0 +1,13 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+openai>=1.30.0
+openai-agents==0.6.3
+qdrant-client>=1.10.0
+tqdm>=4.66.0
+sqlalchemy[asyncio]==2.0.23
+asyncpg==0.29.0
+python-dotenv==1.0.0
+pydantic==2.5.0
+tiktoken==0.5.2
+pytest==7.4.3
+pytest-asyncio==0.21.1

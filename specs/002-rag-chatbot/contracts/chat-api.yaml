@@ -1,0 +1,145 @@
+openapi: 3.0.0
+info:
+  title: RAG Chatbot API
+  version: 1.0.0
+  description: REST API for Physical AI course chatbot
+
+servers:
+  - url: https://physical-ai-backend.railway.app
+    description: Production backend
+  - url: http://localhost:8000
+    description: Local development
+
+paths:
+  /chat:
+    post:
+      summary: Send a chat message and receive AI response
+      operationId: sendChatMessage
+      tags:
+        - Chat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - user_id
+                - message
+                - session_id
+              properties:
+                user_id:
+                  type: string
+                  description: Unique identifier for the user (browser session ID)
+                  example: "user_abc123"
+                message:
+                  type: string
+                  minLength: 1
+                  maxLength: 2000
+                  description: User's question about course content
+                  example: "What are ROS 2 nodes?"
+                selected_text:
+                  type: string
+                  nullable: true
+                  description: Text selected by user before asking (optional)
+                  example: "ROS 2 uses a distributed architecture..."
+                session_id:
+                  type: string
+                  description: Unique identifier for the conversation session
+                  example: "session_xyz789"
+      responses:
+        '200':
+          description: Successful response with AI-generated answer
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - response
+                  - sources
+                  - session_id
+                properties:
+                  response:
+                    type: string
+                    description: AI-generated answer to user's question
+                    example: "ROS 2 nodes are independent processes that perform computation. Each node can publish and subscribe to topics..."
+                  sources:
+                    type: array
+                    description: Course pages cited in the response
+                    items:
+                      type: object
+                      required:
+                        - page
+                        - section
+                        - url
+                      properties:
+                        page:
+                          type: string
+                          example: "03-ros2.md"
+                        section:
+                          type: string
+                          example: "Understanding Nodes"
+                        url:
+                          type: string
+                          format: uri
+                          example: "/docs/03-ros2#understanding-nodes"
+                        relevance_score:
+                          type: number
+                          format: float
+                          minimum: 0.0
+                          maximum: 1.0
+                          example: 0.89
+                  session_id:
+                    type: string
+                    example: "session_xyz789"
+        '400':
+          description: Bad request (invalid input)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Message exceeds 2000 character limit"
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Too many requests. Please try again in 60 seconds."
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "An error occurred processing your request. Please try again."
+
+  /health:
+    get:
+      summary: Health check endpoint
+      operationId: healthCheck
+      tags:
+        - System
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "ok"
+                  timestamp:
+                    type: string
+                    format: date-time
