@@ -32,7 +32,7 @@ const ChatWidget = () => {
   }, []);
 
   // Get API URL - prioritize Docusaurus siteConfig, then environment variables
-  let apiUrl = 'http://localhost:8000'; // default fallback
+  let apiUrl = 'https://alitechpro-physical-ai-book-fastapi.hf.space'; // default fallback
 
   if (typeof window !== 'undefined' && window.__docusaurus) {
     // Access Docusaurus site config
