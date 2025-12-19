@@ -12,8 +12,8 @@ from qdrant_client.http.models import PointStruct, VectorParams, Distance
 from dotenv import load_dotenv
 
 
-# Load environment variables
-load_dotenv()
+# Load environment variables (override=True forces .env to override system env vars)
+load_dotenv(override=True)
 
 
 class VectorService:

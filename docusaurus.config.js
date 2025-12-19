@@ -25,8 +25,7 @@ const config = {
 
   // Custom fields for RAG Chatbot configuration
   customFields: {
-    // Backend API URL (defaults to localhost for development)
-    apiUrl: process.env.REACT_APP_API_URL || 'http://localhost:8000',
+    apiUrl: process.env.REACT_APP_API_URL || 'https://alitechpro-physical-ai-book-fastapi.hf.space',
   },
 
   // Even if you don't use internationalization, you can use this field to set

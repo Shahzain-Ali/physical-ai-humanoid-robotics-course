@@ -9,6 +9,7 @@ import os
 import uuid
 from typing import List, Dict, Optional, Any
 from datetime import datetime
+import asyncio
 from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 from openai import AsyncOpenAI
@@ -22,11 +23,16 @@ from .embedding_service import embedding_service
 from .vector_service import vector_service
 
 
-# Load environment variables
-load_dotenv()
-
+# Load environment variables (override=True forces .env to override system env vars)
+load_dotenv(override=True)
+# Strip any whitespace/carriage returns from API key
+openai_api_key = os.getenv("OPENAI_API_KEY", "").strip()
+if openai_api_key:
+    print(f"API Key loaded.....")
+else:
+    print("API Key Not Found!!")
 # Initialize OpenAI async client
-client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = AsyncOpenAI(api_key=openai_api_key)
 
 
 class AgentService:

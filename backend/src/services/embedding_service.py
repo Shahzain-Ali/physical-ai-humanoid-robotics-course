@@ -11,11 +11,13 @@ from openai import AsyncOpenAI
 from dotenv import load_dotenv
 
 
-# Load environment variables
-load_dotenv()
+# Load environment variables (override=True forces .env to override system env vars)
+load_dotenv(override=True)
 
 # Initialize OpenAI async client
-client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Strip any whitespace/carriage returns from API key
+api_key = os.getenv("OPENAI_API_KEY", "").strip()
+client = AsyncOpenAI(api_key=api_key)
 
 
 class EmbeddingService:
