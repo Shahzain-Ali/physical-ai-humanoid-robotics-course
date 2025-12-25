@@ -105,18 +105,18 @@
 
 ### Frontend Text Selection for User Story 2
 
-- [ ] T029 [P] [US2] Create SelectionHandler hook in src/components/ChatWidget/SelectionHandler.js with useTextSelection() hook listening for mouseup/keyup events
-- [ ] T030 [US2] Update ChatWidget component in src/components/ChatWidget/index.js to integrate SelectionHandler and handle selected_text in API requests
-- [ ] T031 [P] [US2] Add "Ask about this" tooltip UI in src/components/ChatWidget/ChatWidget.css with positioning and animation
+- [X] T029 [P] [US2] Create SelectionHandler hook in src/components/ChatWidget/SelectionHandler.js with useTextSelection() hook listening for mouseup/keyup events
+- [X] T030 [US2] Update ChatWidget component in src/components/ChatWidget/index.js to integrate SelectionHandler and handle selected_text in API requests
+- [X] T031 [P] [US2] Add "Ask about this" tooltip UI in src/components/ChatWidget/ChatWidget.css with positioning and animation
 
 ### Backend Support for User Story 2
 
-- [ ] T032 [US2] Update AgentService.query() in backend/src/services/agent_service.py to accept selected_text parameter and prioritize it in context building
-- [ ] T033 [US2] Update POST /chat endpoint in backend/src/api/chat.py to pass selected_text from request to AgentService
+- [X] T032 [US2] Update AgentService.query() in backend/src/services/agent_service.py to accept selected_text parameter and prioritize it in context building
+- [X] T033 [US2] Update POST /chat endpoint in backend/src/api/chat.py to pass selected_text from request to AgentService
 
 ### Integration for User Story 2
 
-- [ ] T034 [US2] Test complete flow: select text → see tooltip → click tooltip → chat opens → send question → verify response prioritizes selected text
+- [X] T034 [US2] Test complete flow: select text → see tooltip → click tooltip → chat opens → send question → verify response prioritizes selected text
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently - Text selection enhancement is complete!
 
@@ -136,13 +136,13 @@
 
 ### Frontend History Loading for User Story 3
 
-- [ ] T038 [US3] Update ChatWidget component in src/components/ChatWidget/index.js to call GET /history on mount and load previous messages into state
-- [ ] T039 [US3] Implement session ID persistence in localStorage in src/components/ChatWidget/index.js (generate on first visit, reuse on return visits)
-- [ ] T040 [P] [US3] Add loading state and empty state handling in ChatWidget for history retrieval
+- [X] T038 [US3] Update ChatWidget component in src/components/ChatWidget/index.js to call GET /history on mount and load previous messages into state
+- [X] T039 [US3] Implement session ID persistence in localStorage in src/components/ChatWidget/index.js (generate on first visit, reuse on return visits)
+- [X] T040 [P] [US3] Add loading state and empty state handling in ChatWidget for history retrieval
 
 ### Integration for User Story 3
 
-- [ ] T041 [US3] Test complete flow: ask questions → close browser → reopen after delay → verify history restored → ask new question → verify new message appends to history
+- [X] T041 [US3] Test complete flow: ask questions → close browser → reopen after delay → verify history restored → ask new question → verify new message appends to history
 
 **Checkpoint**: At this point, User Stories 1, 2, AND 3 should all work independently - Chat history persistence is complete!
 
@@ -194,8 +194,8 @@
 
 ### Mobile Responsiveness
 
-- [ ] T057 [P] Test and adjust ChatWidget.css for mobile: full-screen panel on small screens, touch-friendly button size (56px), proper keyboard handling
-- [ ] T058 [P] Test chat widget on iOS Safari and Android Chrome: verify no SSR issues, test offline behavior, verify localStorage works
+- [X] T057 [P] Test and adjust ChatWidget.css for mobile: full-screen panel on small screens, touch-friendly button size (56px), proper keyboard handling
+- [X] T058 [P] Test chat widget on iOS Safari and Android Chrome: verify no SSR issues, test offline behavior, verify localStorage works
 
 ### Documentation & Deployment Prep
 

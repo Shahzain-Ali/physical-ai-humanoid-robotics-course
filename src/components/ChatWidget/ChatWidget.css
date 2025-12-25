@@ -36,8 +36,9 @@
   position: fixed;
   bottom: 100px;
   right: 30px;
-  width: 400px;
-  height: 600px;
+  width: min(400px, calc(100vw - 60px));
+  height: min(600px, calc(100vh - 140px));
+  max-height: 80vh;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
@@ -257,13 +258,13 @@
   padding: 8px 0;
 }
 
-/* Mobile responsiveness */
+/* Mobile and tablet responsiveness */
 @media (max-width: 768px) {
   .chat-widget-container {
     width: calc(100vw - 40px);
-    height: calc(100vh - 100px);
-    max-height: 500px;
-    bottom: 20px;
+    height: calc(100vh - 120px);
+    max-height: 70vh;
+    bottom: 80px;
     right: 20px;
     left: 20px;
   }
@@ -277,6 +278,31 @@
     right: 20px;
     width: 50px;
     height: 50px;
+  }
+}
+
+/* Small screens / landscape phones */
+@media (max-width: 480px) {
+  .chat-widget-container {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 100px);
+    max-height: 75vh;
+    bottom: 70px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .chat-widget-button {
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* Additional responsive adjustments for screens between mobile and desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .chat-widget-container {
+    width: min(380px, calc(100vw - 60px));
+    height: min(550px, calc(100vh - 140px));
   }
 }
 
@@ -336,4 +362,91 @@
 
 .chat-widget-messages::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+/* Selected Context Badge - Above Input Field */
+.selected-context-badge {
+  margin: 0 16px 8px;
+  padding: 12px;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  font-size: 13px;
+  animation: slideDown 0.3s ease;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.context-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #0c4a6e;
+}
+
+.context-icon {
+  font-size: 16px;
+}
+
+.context-label {
+  flex: 1;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.context-remove {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.context-remove:hover {
+  background: #e0f2fe;
+  color: #0c4a6e;
+}
+
+.context-text {
+  color: #334155;
+  line-height: 1.5;
+  max-height: 100px;
+  overflow-y: auto;
+  padding: 4px;
+  word-wrap: break-word;
+}
+
+.context-text::-webkit-scrollbar {
+  width: 4px;
+}
+
+.context-text::-webkit-scrollbar-thumb {
+  background: #bae6fd;
+  border-radius: 2px;
+}
+
+.context-text::-webkit-scrollbar-thumb:hover {
+  background: #7dd3fc;
 }

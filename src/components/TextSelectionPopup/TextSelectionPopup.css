@@ -1,0 +1,74 @@
+/* Text Selection Popup */
+.text-selection-popup {
+  position: absolute;
+  z-index: 999; /* Below ChatWidget (1000) but above content */
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 4px;
+  animation: fadeIn 0.2s ease;
+  pointer-events: auto;
+}
+
+.ask-ai-button {
+  background: #10a37f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.ask-ai-button:hover {
+  background: #0d8a6a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(16, 163, 127, 0.3);
+}
+
+.ask-ai-button:active {
+  transform: scale(0.98);
+}
+
+.ask-ai-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.3);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .text-selection-popup {
+    /* Ensure popup stays on screen */
+    max-width: calc(100vw - 40px);
+  }
+
+  .ask-ai-button {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+}
+
+/* Prevent popup from going off-screen on small devices */
+@media (max-width: 480px) {
+  .text-selection-popup {
+    left: 20px !important; /* Override inline style if needed */
+    max-width: calc(100vw - 40px);
+  }
+}

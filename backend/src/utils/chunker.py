@@ -152,9 +152,10 @@ class MarkdownChunker:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
 
-        # Extract the URL from the file path (convert docs/03-ros2.md to docs/03-ros2)
-        # Note: No leading slash to avoid double slashes when combined with base URL
-        url_path = file_path.replace('../docs/', '').replace('.md', '')
+        # Extract the URL from the file path (convert ../docs/03-ros2.md to 03-ros2)
+        # Store just the doc ID without 'docs/' prefix
+        # Frontend will construct full path with baseUrl
+        url_path = file_path.replace('../', '').replace('docs/', '').replace('.md', '')
 
         # First, split by headers to get semantically coherent sections
         sections = self.split_by_headers(content)

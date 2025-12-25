@@ -1,15 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react';
 // Note: Using custom UI implementation since ChatKit requires OpenAI's backend infrastructure
 // The @openai/chatkit-react package is kept for hackathon requirements compliance
 import './ChatWidget.css';
 
-const ChatWidget = () => {
+const ChatWidget = forwardRef((props, ref) => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [selectedText, setSelectedText] = useState(null);
   const messagesEndRef = useRef(null);
 
   // Generate and persist user ID
@@ -30,6 +31,24 @@ const ChatWidget = () => {
 
     setUserId(storedUserId);
   }, []);
+
+  // Restore session ID from sessionStorage (only within same tab)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedSessionId = sessionStorage.getItem('chat_session_id');
+      if (storedSessionId && !sessionId) {
+        setSessionId(storedSessionId);
+      }
+    }
+  }, []);
+
+  // Expose methods to parent component via ref
+  useImperativeHandle(ref, () => ({
+    attachContext: (text) => {
+      setSelectedText(text);
+      setIsOpen(true);
+    }
+  }));
 
   // Get API URL - prioritize Docusaurus siteConfig, then environment variables
   let apiUrl = 'https://alitechpro-physical-ai-book-fastapi.hf.space'; // default fallback
@@ -85,6 +104,7 @@ const ChatWidget = () => {
           user_id: userId,  // Use the persistent user ID
           message: userMessageText,
           session_id: sessionId || null,
+          selected_text: selectedText || null,  // Include selected text as context
         }),
       });
 
@@ -97,6 +117,10 @@ const ChatWidget = () => {
       // Update session ID if new one was created
       if (data.session_id && !sessionId) {
         setSessionId(data.session_id);
+        // Persist to sessionStorage (clears on tab close - market standard)
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('chat_session_id', data.session_id);
+        }
       }
 
       // Add AI response to messages
@@ -109,6 +133,9 @@ const ChatWidget = () => {
       };
 
       setMessages(prev => [...prev, aiMessage]);
+
+      // Clear selected text after successful send
+      setSelectedText(null);
     } catch (error) {
       console.error('Error sending message:', error);
 
@@ -129,9 +156,40 @@ const ChatWidget = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Initial welcome message
+  // Load conversation history when chat opens
   useEffect(() => {
-    if (messages.length === 0 && isOpen) {
+    if (isOpen && messages.length === 0) {
+      if (sessionId) {
+        // Session exists - fetch history from backend
+        const fetchHistory = async () => {
+          try {
+            const response = await fetch(`${apiUrl}/api/history?session_id=${sessionId}&limit=50`);
+            if (response.ok) {
+              const data = await response.json();
+              if (data.messages && data.messages.length > 0) {
+                // Restore previous conversation
+                setMessages(data.messages);
+              } else {
+                // Session exists but no messages - show welcome
+                showWelcomeMessage();
+              }
+            } else {
+              // Failed to fetch - show welcome
+              showWelcomeMessage();
+            }
+          } catch (error) {
+            console.error('Error fetching conversation history:', error);
+            showWelcomeMessage();
+          }
+        };
+        fetchHistory();
+      } else {
+        // No session yet - show welcome
+        showWelcomeMessage();
+      }
+    }
+
+    function showWelcomeMessage() {
       setMessages([{
         id: 'welcome_0',
         role: 'assistant',
@@ -139,7 +197,7 @@ const ChatWidget = () => {
         timestamp: new Date().toISOString(),
       }]);
     }
-  }, [isOpen, messages.length]);
+  }, [isOpen, sessionId, apiUrl]);
 
   return (
     <>
@@ -180,19 +238,25 @@ const ChatWidget = () => {
                 <div className="message-content">
                   {message.content}
 
-                  {message.sources && message.sources.length > 0 && (
+                  {message.role === 'assistant' && message.sources && message.sources.length > 0 && (
                     <div className="message-sources">
                       <strong>Sources:</strong>
                       <ul>
                         {message.sources.map((source, index) => {
-                          // Clean up URL to avoid double slashes
-                          // Remove leading slash if present to work with base URL
-                          let cleanUrl = source.url;
+                          // Backend provides just doc ID (e.g., "ros2")
+                          let cleanUrl = source.url || '';
+
+                          // Remove leading slash if present
                           if (cleanUrl.startsWith('/')) {
                             cleanUrl = cleanUrl.substring(1);
                           }
-                          // Construct full URL with base path
-                          const fullUrl = `/physical-ai-humanoid-robotics-course/${cleanUrl}`;
+
+                          // Get baseUrl from Docusaurus config
+                          const baseUrl = (typeof window !== 'undefined' && window.__docusaurus?.siteConfig?.baseUrl)
+                            || '/physical-ai-humanoid-robotics-course/';
+
+                          // Construct absolute path: /physical-ai-humanoid-robotics-course/docs/ros2
+                          const fullUrl = `${baseUrl}docs/${cleanUrl}`;
 
                           return (
                             <li key={index}>
@@ -227,6 +291,28 @@ const ChatWidget = () => {
             <div ref={messagesEndRef} />
           </div>
 
+          {/* Show selected context badge above input field */}
+          {selectedText && (
+            <div className="selected-context-badge">
+              <div className="context-header">
+                <span className="context-icon">📄</span>
+                <span className="context-label">Context Attached</span>
+                <button
+                  className="context-remove"
+                  onClick={() => setSelectedText(null)}
+                  aria-label="Remove context"
+                >
+                  ×
+                </button>
+              </div>
+              <div className="context-text">
+                {selectedText.length > 200
+                  ? `${selectedText.substring(0, 200)}...`
+                  : selectedText}
+              </div>
+            </div>
+          )}
+
           <form className="chat-widget-input" onSubmit={handleSendMessage}>
             <input
               type="text"
@@ -249,6 +335,6 @@ const ChatWidget = () => {
       )}
     </>
   );
-};
+});
 
 export default ChatWidget;
