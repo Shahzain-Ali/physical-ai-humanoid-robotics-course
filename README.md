@@ -1,6 +1,14 @@
 # Physical AI & Humanoid Robotics Course Book
 
+[![Docusaurus](https://img.shields.io/badge/Docusaurus-2.x-3ECC5F?logo=docusaurus)](https://docusaurus.io/) [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi)](https://fastapi.tiangolo.com/) [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--mini-412991?logo=openai)](https://openai.com/) [![Qdrant](https://img.shields.io/badge/Qdrant-Vector_DB-DC244C)](https://qdrant.tech/) [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)](https://react.dev/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 An interactive Docusaurus-based course book covering Physical AI and Humanoid Robotics modules with an AI-powered RAG chatbot that can answer questions from the entire book content. Deployable to GitHub Pages with a FastAPI backend on Hugging Face Spaces.
+
+**[Live Demo](https://shahzain-ali.github.io/physical-ai-humanoid-robotics-course/)**
+
+## Why This Project?
+
+Physical AI and Humanoid Robotics is one of the fastest-growing fields in tech, but learning resources are scattered across papers, docs, and tutorials. This project brings everything together into a single, structured 13-week course book — and goes a step further by embedding an AI chatbot that lets you ask questions and get instant, cited answers from the book itself. Whether you're a student, researcher, or robotics enthusiast, this is your one-stop learning resource.
 
 ## Overview
 
@@ -84,10 +92,15 @@ uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
 
 - Node.js (v18 or higher)
 - npm or yarn package manager
+- Python 3.10+ (for the RAG chatbot backend)
 
 ## Setup
 
-1. Clone the repository
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Shahzain-Ali/physical-ai-humanoid-robotics-course.git
+   cd physical-ai-humanoid-robotics-course
+   ```
 2. Install dependencies:
    ```bash
    npm install
@@ -171,7 +184,15 @@ physical-ai-humanoid-robotics-course/
 └── README.md                    # Project overview
 ```
 
-## MCP (Model Context Protocol) Setup
+## Contributing
+
+To add new content:
+
+1. Create a new Markdown file in the `docs/` directory
+2. Add the new page to the navigation by editing `sidebars.js`
+3. Build and test the site with `npm run build` and `npm run serve`
+
+### MCP (Model Context Protocol) Setup (For Developers)
 
 This project uses MCP servers for GitHub integration and Context7 documentation. To set up:
 
@@ -187,14 +208,6 @@ This project uses MCP servers for GitHub integration and Context7 documentation.
 3. The `.mcp.json` file is gitignored to protect your secrets.
 
 **Note:** Never commit your actual API keys to version control!
-
-## Contributing
-
-To add new content:
-
-1. Create a new Markdown file in the `docs/` directory
-2. Add the new page to the navigation by editing `sidebars.js`
-3. Build and test the site with `npm run build` and `npm run serve`
 
 ## License
 
